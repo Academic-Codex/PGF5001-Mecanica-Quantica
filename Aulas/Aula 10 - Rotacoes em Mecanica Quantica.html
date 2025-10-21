@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Aula 10</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Aula 10 - Rotacoes em Mecanica Quantica</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7510,17 +7510,307 @@ a.anchor-link {
 </style>
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=83565979">
+<main>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=27aecf89">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Rota%C3%A7%C3%B5es-em-3D-%E2%80%94-Notebook-Essencial">Rotações em 3D — Notebook Essencial<a class="anchor-link" href="#Rota%C3%A7%C3%B5es-em-3D-%E2%80%94-Notebook-Essencial">¶</a></h1><blockquote>
+<p><strong>Objetivo:</strong> compilar, de forma concisa e sequencial, as demonstrações centrais sobre rotações em 3D:<br/>
+(1) ortogonalidade e propriedade fundamental,<br/>
+(2) determinante e interpretação geométrica,<br/>
+(3) matrizes de rotação e (não) comutatividade,<br/>
+(4) rotações infinitesimais e anti-simetria,<br/>
+(5) forma exponencial a partir das infinitesimais,<br/>
+(6) comutadores e relações de comutação.</p>
+</blockquote>
+<hr/>
+<h2 id="1)-Transforma%C3%A7%C3%B5es-ortogonais-e-a-propriedade-fundamental">1) Transformações ortogonais e a propriedade fundamental<a class="anchor-link" href="#1)-Transforma%C3%A7%C3%B5es-ortogonais-e-a-propriedade-fundamental">¶</a></h2><p><strong>Definição (O(3))</strong><br/>
+Uma transformação linear $ R \in \mathbb{R}^{3\times3} $ é <strong>ortogonal</strong> se</p>
+<p>$$
+R^T R = I.
+$$</p>
+<p><strong>Propriedade fundamental:</strong> ortogonalidade  $ \iff $ preserva produto interno e norma.<br/>
+Para vetores $ u,v \in \mathbb{R}^3 $:</p>
+<p>$$
+(Ru)\cdot(Rv) = u\cdot v \quad \Longleftrightarrow \quad R^T R = I.
+$$</p>
+<p><strong>Demonstração:</strong><br/>
+$(Ru)\cdot(Rv) = u^T R^T R v$.<br/>
+Se vale para todo $u,v$, então $R^T R = I$.<br/>
+Reciprocamente, se $R^T R=I$, então $(Ru)\cdot(Rv)=u\cdot v$, logo $\|Ru\|=\|u\|$.<br/>
+Portanto, transformações ortogonais preservam ângulos e comprimentos.</p>
+<blockquote>
+<p><strong>Grupo de rotações:</strong><br/>
+$$ SO(3)=\{R\in O(3)\mid \det R=+1\}. $$</p>
+</blockquote>
 </div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fe0d0e32">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
+<h2 id="2)-Determinante-e-interpreta%C3%A7%C3%A3o-geom%C3%A9trica">2) Determinante e interpretação geométrica<a class="anchor-link" href="#2)-Determinante-e-interpreta%C3%A7%C3%A3o-geom%C3%A9trica">¶</a></h2><p>Da ortogonalidade:<br/>
+$$
+\det(R^T R)=\det I=1 \Rightarrow (\det R)^2=1 \Rightarrow \det R=\pm1.
+$$</p>
+<ul>
+<li>$ \det R=+1 $: <strong>rotação própria</strong> (preserva orientação)</li>
+<li>$ \det R=-1 $: <strong>isometria imprópria</strong> (rotação + reflexão; inverte orientação)</li>
+</ul>
+<p><strong>Interpretação:</strong><br/>
+$|\det R|$ mede o fator de volume.<br/>
+Como $|\det R|=1$, todas as ortogonais preservam volumes.<br/>
+O sinal distingue preservação (+) ou inversão (−) da orientação do triedro $(\hat x,\hat y,\hat z)$.</p>
+<hr/>
+<h2 id="3)-Matrizes-de-rota%C3%A7%C3%A3o-3D-e-(n%C3%A3o)-comutatividade">3) Matrizes de rotação 3D e (não) comutatividade<a class="anchor-link" href="#3)-Matrizes-de-rota%C3%A7%C3%A3o-3D-e-(n%C3%A3o)-comutatividade">¶</a></h2><p><strong>Rotações em torno dos eixos cartesianos</strong> (ângulo $ \theta $):</p>
+<p>$$
+R_x(\theta)=
+\begin{pmatrix}
+1&amp;0&amp;0\\
+0&amp;\cos\theta&amp;-\sin\theta\\
+0&amp;\sin\theta&amp;\cos\theta
+\end{pmatrix},\quad
+R_y(\theta)=
+\begin{pmatrix}
+\cos\theta&amp;0&amp;\sin\theta\\
+0&amp;1&amp;0\\
+-\sin\theta&amp;0&amp;\cos\theta
+\end{pmatrix},\quad
+R_z(\theta)=
+\begin{pmatrix}
+\cos\theta&amp;-\sin\theta&amp;0\\
+\sin\theta&amp;\cos\theta&amp;0\\
+0&amp;0&amp;1
+\end{pmatrix}.
+$$</p>
+<p>Cada uma satisfaz $R_a^T R_a=I$ e $\det R_a=+1$.</p>
+<p><strong>Não comutatividade:</strong><br/>
+Em geral, $R_a(\alpha)R_b(\beta)\neq R_b(\beta)R_a(\alpha)$ para $a\neq b$.<br/>
+Exceções:</p>
+<ul>
+<li>quando $a=b$ (mesmo eixo) → <strong>comutam</strong>: $R_a(\alpha)R_a(\beta)=R_a(\alpha+\beta)$;</li>
+<li>ou ângulos especiais que se “cancelam” por simetria.</li>
+</ul>
+<hr/>
+<h2 id="4)-Rota%C3%A7%C3%B5es-infinitesimais,-anti-simetria-e-forma-geral">4) Rotações infinitesimais, anti-simetria e forma geral<a class="anchor-link" href="#4)-Rota%C3%A7%C3%B5es-infinitesimais,-anti-simetria-e-forma-geral">¶</a></h2><h2 id="4.1-Deriva%C3%A7%C3%A3o-da-antissimetria-a-partir-da-ortogonalidade">4.1 Derivação da antissimetria a partir da ortogonalidade<a class="anchor-link" href="#4.1-Deriva%C3%A7%C3%A3o-da-antissimetria-a-partir-da-ortogonalidade">¶</a></h2><p>Começamos da condição fundamental de ortogonalidade:</p>
+<p>$$
+R^T R = I.
+$$</p>
+<p>Para uma rotação <strong>infinitesimal</strong>, escrevemos:</p>
+<p>$$
+R = I + \epsilon A, \quad \text{com } \epsilon \ll 1.
+$$</p>
+<p>Substituindo em $ R^T R = I $:</p>
+<p>$$
+(I + \epsilon A^T)(I + \epsilon A) = I + \epsilon(A^T + A) + \mathcal{O}(\epsilon^2).
+$$</p>
+<p>Para que isso seja válido até primeira ordem, devemos ter:</p>
+<p>$$
+A^T + A = 0 \quad \Rightarrow \quad A^T = -A.
+$$</p>
+<p>Logo, $A$ é <strong>antissimétrica</strong>, e os elementos diagonais satisfazem $A_{ii} = 0$.</p>
+<hr/>
+<h2 id="4.2-Forma-geral-do-gerador-infinitesimal">4.2 Forma geral do gerador infinitesimal<a class="anchor-link" href="#4.2-Forma-geral-do-gerador-infinitesimal">¶</a></h2><p>A matriz $A$ pode ser escrita de forma geral como:</p>
+<p>$$
+A =
+\begin{pmatrix}
+0 &amp; -a_3 &amp; a_2 \\
+a_3 &amp; 0 &amp; -a_1 \\
+-a_2 &amp; a_1 &amp; 0
+\end{pmatrix}
+= \sum_{i=1}^{3} a_i J_i,
+$$</p>
+<p>onde $a_1,a_2,a_3$ são os <strong>parâmetros infinitesimais de rotação</strong> em torno dos eixos $x,y,z$,
+e $J_i$ são os <strong>geradores básicos</strong>:</p>
+<p>$$
+J_1 =
+\begin{pmatrix}
+0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; -1 \\
+0 &amp; 1 &amp; 0
+\end{pmatrix}, \quad
+J_2 =
+\begin{pmatrix}
+0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 \\
+-1 &amp; 0 &amp; 0
+\end{pmatrix}, \quad
+J_3 =
+\begin{pmatrix}
+0 &amp; -1 &amp; 0 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0
+\end{pmatrix}.
+$$</p>
+<p>Essas matrizes representam <strong>rotações infinitesimais em torno de $x, y, z$</strong> respectivamente.</p>
+<hr/>
+<h2 id="4.3-Propriedade-fundamental-dos-geradores">4.3 Propriedade fundamental dos geradores<a class="anchor-link" href="#4.3-Propriedade-fundamental-dos-geradores">¶</a></h2><p>Em notação de índices:</p>
+<p>$$
+(J_i)_{jk} = -\varepsilon_{ijk}.
+$$</p>
+<p>Logo, os $J_i$ satisfazem a álgebra de comutação:</p>
+<p>$$
+[J_i, J_j] = \varepsilon_{ijk} J_k.
+$$</p>
+<p>Esses são os <strong>geradores da álgebra de Lie so(3)</strong>.</p>
+<hr/>
+<h2 id="4.4-Forma-geral-de-uma-rota%C3%A7%C3%A3o-infinitesimal">4.4 Forma geral de uma rotação infinitesimal<a class="anchor-link" href="#4.4-Forma-geral-de-uma-rota%C3%A7%C3%A3o-infinitesimal">¶</a></h2><p>Uma rotação infinitesimal em torno de um eixo unitário $\hat{n}$ de ângulo $\theta$ é:</p>
+<p>$$
+R(\hat{n}, \theta) = I + \theta\,(\hat{n}\cdot \mathbf{J}) + \mathcal{O}(\theta^2),
+$$</p>
+<p>onde</p>
+<p>$$
+\hat{n}\cdot \mathbf{J} = n_x J_1 + n_y J_2 + n_z J_3.
+$$</p>
+<hr/>
+<h2 id="4.5-Da-forma-infinitesimal-%C3%A0-forma-finita">4.5 Da forma infinitesimal à forma finita<a class="anchor-link" href="#4.5-Da-forma-infinitesimal-%C3%A0-forma-finita">¶</a></h2><p>Somando infinitas rotações pequenas (limite contínuo):</p>
+<p>$$
+R(\hat{n}, \theta)
+= \lim_{N\to\infty}\left(I + \frac{\theta}{N}\,\hat{n}\cdot\mathbf{J}\right)^N
+= e^{\,\theta\,\hat{n}\cdot\mathbf{J}}.
+$$</p>
+<p>Esta é a <strong>forma exponencial das rotações finitas</strong>.</p>
+<blockquote>
+<p>Assim, os $J_i$ são os <strong>geradores infinitesimais</strong> de rotações, e a exponencial deles produz as <strong>rotações finitas</strong>.</p>
+</blockquote>
+<hr/>
+<h2 id="5)-De-infinitesimais-a-finitas:-forma-exponencial">5) De infinitesimais a finitas: forma exponencial<a class="anchor-link" href="#5)-De-infinitesimais-a-finitas:-forma-exponencial">¶</a></h2><p>Somando $N$ rotações infinitesimais $\delta\theta=\theta/N$:</p>
+<p>$$
+R(\hat n,\theta)
+=\lim_{N\to\infty}\!\left(I+\frac{\theta}{N}A(\hat n)\right)^N
+=\exp\!\big(\theta\,A(\hat n)\big).
+$$</p>
+<p>Em 3D, usando $A=[\hat n]_\times$ e $A^3=-A$, obtém-se a <strong>fórmula de Rodrigues</strong>:</p>
+<p>$$
+R(\hat n,\theta)=I+\sin\theta\,A+(1-\cos\theta)A^2.
+$$</p>
+<p>Essa forma reproduz $R_x,R_y,R_z$ quando $\hat n$ é um eixo cartesiano.</p>
+<blockquote>
+<p><strong>Analogia quântica:</strong><br/>
+No espaço de Hilbert, $U(\hat n,\theta)=\exp(-\tfrac{i}{\hbar}\theta\,\hat n\cdot\mathbf J)$.<br/>
+No espaço vetorial 3D clássico, $R=\exp(\theta A)$.</p>
+</blockquote>
+<hr/>
+<h2 id="6)-Comutador-de-rota%C3%A7%C3%B5es-e-rela%C3%A7%C3%B5es-de-comuta%C3%A7%C3%A3o">6) Comutador de rotações e relações de comutação<a class="anchor-link" href="#6)-Comutador-de-rota%C3%A7%C3%B5es-e-rela%C3%A7%C3%B5es-de-comuta%C3%A7%C3%A3o">¶</a></h2><p>Para dois geradores infinitesimais $A_i=[\hat e_i]_\times$ ( $i=x,y,z$ ):</p>
+<p>$$
+[A_i,A_j] = A_iA_j - A_jA_i = \varepsilon_{ijk}\,A_k.
+$$</p>
+<p><strong>Demonstração (vetorial):</strong><br/>
+Como $A_i v = \hat e_i\times v$,</p>
+<p>$$
+A_i(A_j v) = \hat e_i\times(\hat e_j\times v)
+= \hat e_j(\hat e_i\cdot v) - v(\hat e_i\cdot\hat e_j).
+$$</p>
+<p>Trocando $i\leftrightarrow j$ e subtraindo:</p>
+<p>$$
+[A_i,A_j]v = (\hat e_i\times\hat e_j)\times v
+= \varepsilon_{ijk}\,\hat e_k\times v
+= \varepsilon_{ijk}A_k v.
+$$</p>
+<p>Como vale para todo $v$: $ [A_i,A_j]=\varepsilon_{ijk}A_k. $</p>
+<p><strong>Forma matricial:</strong></p>
+<p>$$
+(A_i)_{\ell m}=-\varepsilon_{i\ell m}, \quad
+[A_i,A_j]_{\ell n}=\varepsilon_{ijk}(A_k)_{\ell n}.
+$$</p>
+<p><strong>(Não) comutatividade finita:</strong><br/>
+Para ângulos finitos pequenos $\alpha,\beta$, pelo BCH:</p>
+<p>$$
+e^{\alpha A_i} e^{\beta A_j}
+= e^{\alpha A_i + \beta A_j + \tfrac{1}{2}\alpha\beta[A_i,A_j]+\cdots}.
+$$</p>
+<p>Se $i\neq j$, o termo $[A_i,A_j]\neq0$ → <strong>não comutam</strong>.<br/>
+Se $i=j$, <strong>comutam</strong>.</p>
+<hr/>
+<h3 id="Identidades-%C3%BAteis">Identidades úteis<a class="anchor-link" href="#Identidades-%C3%BAteis">¶</a></h3><ul>
+<li>$A=[\mathbf a]_\times$ com $A v=\mathbf a\times v$</li>
+<li>$A^2=\mathbf a\mathbf a^T-\|\mathbf a\|^2 I$</li>
+<li>Para $\|\hat n\|=1$: $A^3=-A$</li>
+<li>Levi-Civita: $\varepsilon_{ilm}\varepsilon_{jmn}=\delta_{ij}\delta_{ln}-\delta_{in}\delta_{lj}$</li>
+<li>BCH: $e^X e^Y = e^{X+Y+\tfrac12[X,Y]+\cdots}$</li>
+</ul>
+<hr/>
+<blockquote>
+<p><strong>Resumo final:</strong><br/>
+Rotações 3D são isometrias (ortogonais com $\det=+1$);<br/>
+infinitesimalmente, são geradas por matrizes anti-simétricas;<br/>
+composições finitas nascem da exponencial;<br/>
+e a não comutatividade é regida por<br/>
+$$[A_i,A_j]=\varepsilon_{ijk}A_k,$$<br/>
+a álgebra $so(3)$.</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b6e69d7d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="7)-Rota%C3%A7%C3%B5es-qu%C3%A2nticas:-operadores-unit%C3%A1rios-e-geradores">7) Rotações quânticas: operadores unitários e geradores<a class="anchor-link" href="#7)-Rota%C3%A7%C3%B5es-qu%C3%A2nticas:-operadores-unit%C3%A1rios-e-geradores">¶</a></h2><p><strong>Wigner:</strong> simetrias que preservam probabilidades são representadas por operadores unitários/antiunitários. Para rotações, tomamos <strong>unitários</strong>:
+$$
+U(R_2)\,U(R_1)=U(R_2R_1),\qquad U(I)=\mathbf 1,\qquad U(R)^{-1}=U(R)^\dagger .
+$$</p>
+<blockquote>
+<p>Em MQ, representações podem ser <strong>projetivas</strong>: o grupo físico das rotações é $SO(3)$, mas a representação quântica fundamental é seu <strong>revestimento duplo</strong> $SU(2)$. Consequência: para spin $1/2$, $U(2\pi)=-\mathbf 1$ e $U(4\pi)=\mathbf 1$.</p>
+</blockquote>
+<p><strong>Definição dos geradores (infinitesimais):</strong>
+se $R(\boldsymbol\theta)$ é uma rotação parametrizada por $\boldsymbol\theta\in\mathbb R^3$,
+$$
+U(\boldsymbol\theta)=\mathbf 1-\frac{i}{\hbar}\,\boldsymbol\theta\!\cdot\!\mathbf J+\mathcal O(\theta^2),\qquad
+J_k\equiv i\hbar\left.\frac{\partial U(\boldsymbol\theta)}{\partial \theta_k}\right|_{\boldsymbol\theta=0}.
+$$
+Como $U$ é unitário, os geradores são <strong>Hermitianos</strong>: $J_k^\dagger=J_k$.</p>
+<p><strong>Forma finita (exponencial):</strong>
+$$
+\boxed{~U(\hat n,\theta)=\exp\!\left(-\frac{i}{\hbar}\,\theta\,\hat n\!\cdot\!\mathbf J\right).~}
+$$</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=53585e36">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="8)-%C3%81lgebra-de-comuta%C3%A7%C3%A3o-dos-$J_i$-via-composi%C3%A7%C3%A3o-(BCH)">8) Álgebra de comutação dos $J_i$ via composição (BCH)<a class="anchor-link" href="#8)-%C3%81lgebra-de-comuta%C3%A7%C3%A3o-dos-$J_i$-via-composi%C3%A7%C3%A3o-(BCH)">¶</a></h2><p>Considere duas rotações infinitesimais $\alpha$ e $\beta$ em torno de eixos $i$ e $j$:
+$$
+U_i(\alpha)=e^{-\frac{i}{\hbar}\alpha J_i},\qquad
+U_j(\beta)=e^{-\frac{i}{\hbar}\beta J_j}.
+$$
+Pelo <strong>Baker–Campbell–Hausdorff</strong>,
+$$
+U_i(\alpha)U_j(\beta)=
+\exp\!\left(-\frac{i}{\hbar}(\alpha J_i+\beta J_j)
++\frac{1}{2}\left(-\frac{i}{\hbar}\right)^2\alpha\beta[J_i,J_j]+\cdots\right).
+$$
+Mas compor rotações no espaço dá outra rotação (em torno de $k$) já na <strong>segunda ordem</strong>. Logo,
+$$
+[J_i,J_j]=i\hbar\,\varepsilon_{ijk}\,J_k.
+$$
+Essa é a álgebra de Lie <strong>su(2)/so(3)</strong> no espaço de Hilbert.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b09bbad4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
