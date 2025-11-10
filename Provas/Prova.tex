@@ -1,0 +1,180 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,bm}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{enumitem}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Quantum Mechanics Exam} \\
+\Large\textbf{Angular Momentum and Rotations}
+\end{center}
+
+\bigskip
+
+\noindent
+\textbf{Information that might be useful:}
+\[
+J_{\pm}|jm\rangle = \hbar \sqrt{j(j+1) - m(m \pm 1)}\,|j,m\pm1\rangle, 
+\qquad
+J_{\pm} = J_x \pm iJ_y
+\]
+\[
+d^{(1)}_{1,\pm1} = \tfrac{1}{2}(1 \pm \cos\theta),
+\qquad
+d^{(1)}_{1,0} = -\tfrac{1}{\sqrt{2}}\sin\theta,
+\qquad
+d^{(1)}_{0,0} = \cos\theta
+\]
+
+\[
+T^{k}_{q} = \sum_{q_1,q_2} X^{k_1}_{q_1} Y^{k_2}_{q_2} \langle k_1q_1;k_2q_2|kq\rangle
+\]
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\noindent\textbf{1. [30 points total]}
+
+\begin{enumerate}
+\item[(a)] [5 points] Write an expression for $J_x$ and $J_y$ in terms of the ladder operators $J_+$ and $J_-$.
+
+\item[(b)] [5 points] A quantum state is rotated around the $y$-axis by an angle $\theta$. Write an expression for the rotation operator $U(\hat{y},\theta)$ in terms of the raising and lowering operators $J_\pm$.
+
+\item[(c)] [20 points] An angular momentum eigenstate $|j,m=j\rangle$ is rotated around the $y$-axis by a small angle $\epsilon$. After the rotation, a measurement of $j$ and $m$ is made. Obtain an approximate expression for the probability that the rotated state is measured to be in the same state as the original $|j,m=j\rangle$, keeping terms up to $\mathcal{O}(\epsilon^2)$.
+\end{enumerate}
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent\textbf{2. [20 points total]} Add angular momenta $j_1 = 1$ and $j_2 = \tfrac{1}{2}$ (e.g., two particles with spin-1 and spin-1/2, or one particle with spin-1/2 in an orbital $l=1$).
+
+\begin{enumerate}
+\item[(a)] What are the possible values for the total angular momentum $j$? What are the possible values for $m$?
+
+\item[(b)] Express all possible eigenstates $|j,m\rangle$ in terms of the tensor product basis $|j_1m_1;j_2m_2\rangle$. For simplicity, you may omit the values of $j_1$ and $j_2$ and write your answer as
+\[
+|j=\#,m=\#\rangle = \#|{+}{+}\rangle + \#|{+}{0}\rangle + \#|{+}{-}\rangle + \#|{0}{+}\rangle + \#|{-}{0}\rangle + \dots
+\]
+where the first symbols $(+, -)$ denote $m_1 = +\tfrac{1}{2}, -\tfrac{1}{2}$ respectively, and the second $(+, 0, -)$ denote $m_2 = +1, 0, -1$.
+\end{enumerate}
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noindent\textbf{3. [15 points total]} Consider an eigenstate of orbital angular momentum with $|l = 1, m = 0\rangle$. Suppose this state is rotated by an angle $\beta$ about the $y$-axis. Find the probability for the rotated state to be measured with $m = 0, -1, +1$.
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noindent\textbf{4. [45 points]} Consider a vector operator $\mathbf{V}$ with Cartesian components $(V_x, V_y, V_z)$.
+
+\begin{enumerate}
+\item[(a)] [5 points] How does this operator transform under a rotation? That is, calculate $U V_i U^\dagger$, where $U = U(\hat{n},\theta)$ is the quantum rotation operator, and $R$ is a $3\times3$ rotation matrix in Euclidean space.
+
+\item[(b)] [5 points] Write $\mathbf{V}$ as a rank-1 $k=1$ spherical tensor operator $T^{(k)}_q$. Explicitly write all components $q = 1, 0, -1$ in terms of the Cartesian operators $V_{x,y,z}$. How does $T^{(1)}_q$ transform under rotation? (Compute $U T^{(1)}_q U^\dagger$.)
+
+\item[(c)] [5 points] Consider the angular momentum eigenstates $|jm\rangle$:
+\[
+J^2|jm\rangle = \hbar^2 j(j+1)|jm\rangle, \qquad J_z|jm\rangle = \hbar m|jm\rangle
+\]
+What relations among $j,j',m,m',q$ are necessary for the following matrix element to be non-zero?
+\[
+\langle j'm'|T^{(1)}_q|jm\rangle \neq 0
+\]
+
+\item[(d)] [15 points] Consider a second vector operator $\mathbf{W} = (W_x,W_y,W_z)$. Construct a rank-1 spherical tensor operator from $\mathbf{W}$ and $\mathbf{V}$, using the notation $Z^{(1)}_q$ for this new operator.
+
+\item[(e)] [15 points] Using the Wigner–Eckart theorem, write an expression for the following ratios:
+\[
+\frac{\langle j'm'|T^{(1)}_{+1}|jm\rangle}
+{\langle j',m'''|T^{(1)}_{-1}|jm''\rangle}, \qquad
+\frac{\langle j'm'|Z^{(1)}_{+1}|jm\rangle}
+{\langle j',m'''|Z^{(1)}_{-1}|jm''\rangle}
+\]
+Each matrix element satisfies the selection rules from part (c) and is non-zero. Explain how these ratios are related.
+\end{enumerate}
+
+\bigskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noindent\textbf{5. [50 points]} Consider the spin angular momentum of a system of spin-$\tfrac{1}{2}$ particles (ignore orbital angular momentum).
+
+\begin{enumerate}[label=(\alph*),itemsep=4pt,topsep=0pt,leftmargin=1.5em]
+\item [(a)] [5 points] How many possible spin states can one spin-$\tfrac{1}{2}$ particle have? How many total spin states can two spin-$\tfrac{1}{2}$ particles have?
+
+\item [(b)] [5 points] What are the possible values of total spin $s$ for a system of two spin-$\tfrac{1}{2}$ particles? How many states are there with each value of $s$ (i.e., what is the degeneracy)?
+
+\item [(c)] [15 points] Explicitly write an expression for each state of total angular momentum $|s m\rangle$ in terms of tensor product states with definite angular momentum of single particles 
+\[
+|m_1m_2\rangle \equiv |s_1=\tfrac{1}{2},m_1\rangle \otimes |s_2=\tfrac{1}{2},m_2\rangle.
+\]
+
+\item [(d)] [15 points] A third spin-$\tfrac{1}{2}$ particle is added to the system. What is the maximum value of total spin $s$ for this three-particle state? Write the stretched state $|s_{\max},m=s_{\max}\rangle$ in terms of product states $|m_1m_2m_3\rangle$, and use this to find all possible states with $s=s_{\max}$.
+
+\item [(e)] [10 points] What are all the possible values of total spin $s$ of a system of three spin-$\tfrac{1}{2}$ particles? How many states are there with each value of $s$, and what is the total number of states?
+\end{enumerate}
+
+\bigskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noindent\textbf{6. [40 points]} Consider a spinless particle inside an empty sphere of radius $R$.
+That is, its wave function obeys the free particle Schrödinger equation $V(r)=0$ for $r<R$, but vanishes
+outside $\psi(r\ge R)=0$, where $r=\sqrt{\mathbf{x}^2}$.
+
+\[
+V(\mathbf{x}) = V(r) =
+\begin{cases}
+0, & r<R,\\[3pt]
+\infty, & r\ge R
+\end{cases}
+\tag{1}
+\]
+
+\begin{enumerate}[label=(\alph*),itemsep=4pt,topsep=0pt,leftmargin=1.5em]
+\item[(a)] [5 points] What symmetries does the system have? List as many operators as you can that commute with the Hamiltonian.
+
+\item[(b)] [15 points] Write the time-independent Schrödinger equation in configuration space for the particle in the region $r<R$, using spherical coordinates $(r,\theta,\phi)$.  
+For a wavefunction with angular momentum $\ell$, write an equation for the radial $(r)$ dependence.
+
+\item[(c)] [10 points] Solve the radial equation to find the general solution of the (free) Schrödinger equation.
+
+\item[(d)] [10 points] For spherically symmetric wavefunctions ($\ell=0$), enforce the boundary condition at radius $r=R$ to find the energy spectrum and the associated energy eigenfunctions with $\ell=0$.  
+You do not have to normalize the wave function.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bigskip
+\noindent\textbf{7. [25 points]} A spin-1 particle has its spin component along the direction
+\[
+\hat{n} = \frac{1}{\sqrt{2}}(1,0,1)
+\tag{21}
+\]
+measured with result $\hbar$. Subsequently $S_z$ is measured, with probabilities for the three possible outcomes.
+
+Let $R$ be a rotation that maps the $\hat{z}$ axis into $\hat{n}$, that is,
+\[
+R\hat{z} = \hat{n}.
+\tag{22}
+\]
+
+Express the probabilities of the three possible measurement outcomes in terms of the rotation matrix
+\[
+D^1_{m m'}(R) \equiv \langle j = 1, m' | U(R) | j = 1, m \rangle.
+\tag{23}
+\]
+
+Solve this matrix to find the probabilities explicitly.
+\end{document}
