@@ -1,0 +1,454 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{bm}
+
+\begin{document}
+
+\section*{(c) Rotações}
+
+\subsection*{\( \mathbb{E}_3 \) - Espaço Euclidiano - Rotações Clássicas}
+
+Considerando um vetor \(\vec{K}\) no espaço tridimensional sendo rotacionado.
+
+\[
+\vec{K}' = \vec{K} + \delta \vec{K} \tag{14.b}
+\]
+
+Onde \(\delta \vec{\omega} = \delta \theta \, \hat{n}\) e \(\theta \ll 1\).
+
+\[
+\delta \vec{K} = \delta \vec{\omega} \times \vec{K}
+\]
+\[
+\delta K_i = \epsilon_{ijk} \, \delta \omega_j \, K_k
+\]
+\[
+\delta K_i = \epsilon_{ijk} \, \delta \theta \, \hat{n}_j \, K_k \tag{14.c}
+\]
+
+\subsection*{Outra Forma: Usando Matrizes}
+
+\[
+\vec{K}' = R^{\hat{n}}(\delta \theta) \, \vec{K}
+\]
+\[
+K_i' = K_i + \epsilon_{ijk} \, \delta \theta \, \hat{n}_j \, K_k
+\]
+\[
+K_i' = K_{ij} K_j
+\]
+
+\subsection*{Uma das (infinitas) Representações dessa Rotação}
+
+\[
+I_x = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & -i \\ 0 & i & 0 \end{pmatrix}, \quad 
+I_y = \begin{pmatrix} 0 & 0 & i \\ 0 & 0 & 0 \\ -i & 0 & 0 \end{pmatrix}, \quad 
+I_z = \begin{pmatrix} 0 & -i & 0 \\ i & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}
+\]
+
+Para uma rotação quântica de um vetor \(\vec{K}\) temos:
+\[
+\vec{K} \rightarrow \vec{K}' = e^{-i \phi I_1} \cdot \vec{K} = R_1(\phi_1) \cdot \vec{K}
+\]
+
+
+
+\section*{Espaço de Hilbert - Rotações Quânticas}
+
+
+\(\mathcal{H}\): Espaço de Hilbert - Rotações Quânticas.
+
+- \(R\) em \(\mathbb{E}_3\) (rotações em \(\mathbb{E}_3\) não comutam).
+
+- \(D(R)\) em \(\mathcal{H}\) (representação da rotação no espaço de Hilbert).
+
+Para duas rotações \(R_1\) e \(R_2\) em \(\mathbb{E}_3\):
+\[
+D(R_1 R_2) \equiv D(R_1) D(R_2) \neq D(R_2) D(R_1)
+\]
+\[
+D(R) = e^{-i \theta \hat{n} \cdot \vec{J}} \tag{16}
+\]
+
+\(\hat{n} \cdot \vec{J}\) é a componente do momento angular na direção \(\hat{n}\), onde \(\vec{J}\) é o gerador da rotação em torno de \(\hat{n}\).
+
+\section*{Cálculos no Espaço Euclidiano (\(\mathbb{E}_3\))}
+
+1. Para rotações infinitesimais, temos:
+   \[
+   \vec{K}' = (1 - i \delta \phi_2 I_2 + \dots)(1 - i \delta \phi_1 I_1 + \dots) \vec{K}
+   \]
+   \[
+   \vec{K}'' = (1 - i \delta \phi_1 I_1 + \dots)(1 - i \delta \phi_2 I_2 + \dots) \vec{K}
+   \]
+   \[
+   \vec{K}'' - \vec{K}' = -\delta \phi_1 \delta \phi_2 \left( I_1 I_2 - I_2 I_1 \right) \vec{K}
+   \]
+   \[
+   = -i \delta \phi_1 \delta \phi_2 I_3 \vec{K} + \psi(\delta \phi_3) \vec{K}
+   \]
+   \[
+   = -i \delta \phi_1 i \delta \phi_2 I_3 \vec{K} + \psi(\delta \phi^3) \vec{K}
+   \]
+
+2. No espaço de Hilbert \(\mathcal{H}\):
+   \[
+   \lim_{\delta \phi_i \to 0} \left( e^{-i \delta \phi_1 J_1} e^{-i \delta \phi_2 J_2} - e^{-i \delta \phi_2 J_2} \dots \right)
+   \]
+
+\[
+[J_i, J_j] = i \epsilon_{ijk} J_k
+\]
+
+\[
+R \in \mathbb{E}_3 \longleftrightarrow D(R) = e^{-i \theta \hat{n} \cdot \vec{J}} \in \mathcal{H}
+\]
+\[
+\hat{A} \in \mathcal{H} \quad \Rightarrow \quad A' = D^+(R) A D(R)
+\]
+
+No caso de uma rotação infinitesimal por \(\delta \theta\):
+\[
+A' = A + \delta A \tag{18b}
+\]
+
+\[
+A + \delta A = (1 + i \delta \theta \, \hat{n} \cdot \vec{J}) A (1 - i \delta \theta \, \hat{n} \cdot \vec{J})
+\]
+\[
+= A + i \delta \theta (\hat{n} \cdot \vec{J} A - A \hat{n} \cdot \vec{J})
+\]
+\[
+= A + i \delta \theta \, [\hat{n} \cdot \vec{J}, A]
+\]
+
+Portanto,
+\[
+\delta A = i \delta \theta [\hat{n} \cdot \vec{J}, A] \tag{18c}
+\]
+
+Se \([\hat{n} \cdot \vec{J}, A] = 0\) para todo \(\hat{n}\), então \(A\) é um escalar (ou seja, um operador que é invariante sob rotação).
+
+Considere um observável \(\hat{V} = (\hat{V}_1, \hat{V}_2, \hat{V}_3) \in \mathcal{H}\):
+\[
+\vec{V}' \rightarrow \vec{V} = \vec{V} + \delta \vec{V} \tag{19}
+\]
+
+Da mesma forma, para \(\vec{K} \in \mathbb{E}_3\) sob uma rotação:
+\[
+\vec{K}' = \vec{K} + \delta \vec{K}
+\]
+\[
+\delta \vec{K} = \delta \theta \, \hat{n} \times \vec{K}
+\]
+
+\section*{Definição de Momento Angular em MQ (com \(\hbar = 1\))}
+
+Considerando um conjunto de três operadores \( J_i \) (com \( i = 1, 2, 3 \)) que obedecem à seguinte álgebra:
+\[
+[J_i, J_j] = i \epsilon_{ijk} J_k
+\]
+
+\( J^2 \) é um operador escalar, o que implica que:
+\[
+[J^2, J_i] = 0 \quad \forall \, i
+\]
+
+O conjunto de operadores \( \{ J^2, J_3 \} \) define uma base de estados \( \{ \ket{j, m} \} \) tal que:
+\[
+\braket{j m | j' m'} = \delta_{j j'} \delta_{m m'}
+\]
+
+E os autovalores dos operadores \( J^2 \) e \( J_3 \) nos estados \(\ket{j, m}\) são dados por:
+\[
+J^2 \ket{j, m} = j(j+1) \ket{j, m}
+\]
+\[
+J_3 \ket{j, m} = m \ket{j, m}
+\]
+onde \(j\) e \(m\) são reais, e os operadores \( J_i \) são hermitianos.
+
+Sabemos que:
+\[
+[J_i, J_j] = i \epsilon_{ijk} J_k
+\]
+
+Definindo os operadores de subida e descida como:
+\[
+J_+ = J_1 + i J_2
+\]
+\[
+J_- = J_1 - i J_2
+\]
+
+Esses operadores não são hermitianos e obedecem às seguintes relações de comutação:
+\[
+[J_+, J_-] = 2 J_3
+\]
+\[
+[J_+, J_3] = -J_+
+\]
+\[
+[J_-, J_3] = J_-
+\]
+
+Portanto:
+
+\[
+J_+ J_- = J^2 - J_3 (J_3 - 1)
+\]
+\[
+J_- J_+ = J^2 - J_3 (J_3 + 1)
+\]
+\[
+[J_\pm, J^2] = 0
+\]
+
+A condição para \( J^2 \) no estado \(\ket{j, m}\) é:
+\[
+\braket{jm | J^2 | jm} = \abs{J \ket{jm}}^2 \geq 0
+\]
+o que implica que:
+\[
+j(j+1) \geq 0
+\]
+
+Para o operador \( J_3 \):
+\[
+\braket{jm | J^2 + J_3^2 | jm} = \braket{jm | J^2 - J_3^2 | jm} \geq 0
+\]
+o que implica que:
+\[
+j(j+1) - m^2 \geq 0
+\]
+sabendo que \( j \) e \( m \) são reais.
+
+Assim, \( m \) varia entre \(\text{mín} \leq m \leq \text{máx}\).
+
+\[
+J_3 J_\pm \ket{jm} = (J_\pm J_3 \pm J_\pm) \ket{jm}
+\]
+\[
+= (m \pm 1) J_\pm \ket{jm}
+\]
+
+Logo, \(J_\pm \ket{jm}\) é um autovetor de \( J_3 \) com autovalor \( m \pm 1 \).
+
+\[
+J^2 J_\pm \ket{jm} = J_\pm J^2 \ket{jm} = (j(j+1)) J_\pm \ket{jm}
+\]
+
+\( J_\pm \ket{jm} \) é um autovalor de \( J^2 \) com autovalor \( j(j+1) \).
+
+\[
+J_\pm \ket{jm} = a_\pm \ket{j, m \pm 1}
+\]
+
+Onde:
+\[
+|a_\pm|^2 = \braket{jm | J_\mp J_\pm | jm}
+\]
+\[
+= \braket{jm | J^2 - J_3(J_3 \pm 1) | jm}
+\]
+\[
+= j(j+1) - m(m \pm 1)
+\]
+\[
+a_\pm = \sqrt{j(j+1) - m(m \pm 1)}
+\]
+
+Portanto:
+\[
+J_\pm \ket{jm} = \sqrt{j(j+1) - m(m \pm 1)} \ket{j, m \pm 1}
+\]
+
+\[
+J_+ \ket{j, \text{max}} = 0
+\]
+\[
+J_- \ket{j, \text{min}} = 0
+\]
+
+Consequentemente:
+\[
+j(j+1) = \text{max} \, (\text{max} + 1)
+\]
+\[
+= \text{min} \, (\text{min} - 1)
+\]
+
+Isso implica que:
+\[
+\text{max} (\text{max} + 1) - \text{min} (\text{min} - 1) = 0
+\]
+\[
+(\text{max} + \text{min})(\text{max} - \text{min} + 1) = 0
+\]
+\[
+\text{max} = -\text{min} = j
+\]
+
+Portanto:
+\[
+-j \leq m \leq j
+\]
+
+Para algum \( k \):
+\[
+(J_+)^k \ket{jm_0} \propto \ket{j, m_0 + k}, \quad k \text{ é um número inteiro}
+\]
+\[
+m_0 + k = \text{max} = j \tag{1}
+\]
+
+Para algum \( l \):
+\[
+(J_-)^l \ket{jm_0} \propto \ket{j, m_0 - l}, \quad l \text{ é um número inteiro}
+\]
+\[
+m_0 - l = \text{min} = -j \tag{2}
+\]
+
+Subtraindo (2) de (1):
+\[
+k + l = 2j, \quad j = 0, \frac{1}{2}, 1, \frac{3}{2}, \dots
+\]
+
+Assim, dado \( j \), existem \( 2j + 1 \) estados (multipletos).
+
+Você não pode mudar \( j \) sob rotação, mas pode mudar suas componentes através da rotação. Fixando \( j \), temos então um espaço de \((2j + 1)\) dimensões em \(\mathcal{H}\).
+
+\( J_i \) é uma representação de \( J \).
+
+O espectro de \( J_3 \) implica que os operadores de momento angular possuem duas propriedades importantes que são independentes da base:
+
+1. 
+\[
+\sum_m' \braket{jm | J_3 | jm} = 0 \quad \text{(claramente)}
+\]
+
+Na verdade, isso é o traço:
+\[
+\Rightarrow \Tr \{ J_3 \} = 0
+\]
+
+\[
+D^j(R) J_3 D^{j}(R) = J_i
+\]
+\[
+\Tr \, J_i = 0
+\]
+
+2. Teorema de Cayley-Hamilton
+
+\[
+M = M^+ \quad (n \times n), \quad \{ \lambda_n \} \text{ são os autovalores}
+\]
+\[
+\prod_i (M - \lambda_i) = 0
+\]
+
+Definindo \( M = J_3 \):
+\[
+U^+ J_3 U = J_i
+\]
+\[
+\prod_{m = -j}^j (J_i - m) = 0
+\]
+
+Qualquer operador em \(\mathcal{H}_j\) que dependa do momento angular só pode ser escrito como um polinômio de grau \(2j + 1\).
+
+\[
+e^{-i \theta J_3} \ket{jm} = e^{-i \theta m} \ket{jm}
+\]
+
+Para \(\theta = 2\pi\):
+\[
+\ket{jm} \rightarrow e^{-i 2\pi m} \ket{jm}
+\]
+
+Se \( j \) é inteiro: \(\ket{jm}\) permanece o mesmo.  
+Se \( j \) é semi-inteiro: \(\ket{jm}\) muda para \(-\ket{jm}\).
+
+\[
+\braket{\Psi | A | \Psi} \text{ não muda!}
+\]
+
+\subsection*{(a) Momento Angular Orbital}
+
+\[
+l = 0, 1, 2, \dots \quad \Rightarrow \quad \{ \ket{lm} \}
+\]
+\[
+L^2 \ket{lm} = l(l+1) \ket{lm}
+\]
+\[
+L_3 \ket{lm} = m \ket{lm}
+\]
+
+\(\ket{r} \equiv \ket{r \, \theta \, \phi}\), onde \(r\) é fixo e \(\theta\) e \(\phi\) variam (coordenadas polares).
+
+\[
+\braket{\phi | L^2 | lm} = l(l+1) \braket{\phi | lm}
+\]
+\[
+\braket{\phi | L_3 | lm} = m \braket{\phi | lm}
+\]
+
+\(\braket{\phi | lm} = Y_{lm}(\theta, \phi)\), onde \(Y_{lm}\) são os harmônicos esféricos.
+
+
+\[
+\int d\theta' \, d\phi' \, \sin \theta \, \langle \phi | L_3 | \theta' \phi' \rangle \langle \theta' \phi' | lm \rangle = m \langle \phi | lm \rangle
+\]
+
+Isso é trivial:
+
+\[
+= \int d\theta' d\phi' \, \sin \theta' \, \frac{1}{i} \frac{\partial}{\partial \phi} \delta(\theta - \theta') \delta(\phi - \phi') \cdot Y_{lm}(\theta', \phi')
+\]
+
+\[
+= m Y_{lm}(\theta, \phi)
+\]
+
+\[
+\frac{1}{i} \frac{\partial}{\partial \phi} Y_{lm}(\theta, \phi) = m Y_{lm}(\theta, \phi)
+\]
+
+Equivalente a \(L^2\):
+
+\[
+= \left[ \frac{1}{\sin \theta} \frac{\partial}{\partial \theta} \left( \sin \theta \frac{\partial}{\partial \theta} \right) + \frac{1}{\sin^2 \theta} \frac{\partial^2}{\partial \phi^2} \right] Y_{lm}(\theta, \phi)
+\]
+
+\[
+= l(l+1) Y_{lm}(\theta, \phi)
+\]
+
+\[
+\int d\Omega \, Y_{l'm'}(\Omega) Y_{lm}(\Omega) = \delta_{ll'} \delta_{mm'} \quad \text{(fator de normalização?)}
+\]
+
+\[
+\int d\hat{n} \, Y_{l'm'}(\hat{n}) Y_{lm}(\hat{n})
+\]
+
+Onde \(\Omega = (\theta, \phi)\) e \(d\Omega = \sin \theta \, d\theta \, d\phi\).
+
+\[
+Y_{lm}(\theta, \phi) = (-1)^m Y_{l,-m}^*(\theta, \phi)
+\]
+
+\[
+Y_{lm}(\theta, \phi) = (-1)^m \left( \frac{(2l+1)(l-m)!}{4\pi(l+m)!} \right)^{1/2} P_l^m(\cos \theta) e^{im \phi}, \quad m > 0
+\]
+
+\[
+P_l^m(\cos \theta) = (1 - \cos^2 \theta)^{m/2} \frac{d^m}{d(\cos \theta)^m} P_l(\cos \theta)
+\]
+
+\end{document}

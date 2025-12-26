@@ -1,0 +1,12 @@
+REPO_TAGLINE: Quantum states • operators • measurement
+ASSETS_DIR: .github/readme
+CTA_TEXT: Access the full course website
+THEME: notes
+SITE_URL: https://academic-codex.github.io/PGF5001-Mecanica-Quantica-I
+
+BG_1: "#0B1020"
+BG_2: "#111827"
+TEXT_MAIN: "#E5E7EB"
+TEXT_MUTED: "#9CA3AF"
+ACCENT: "#93C5FD"
+CARD_RADIUS: "18"
